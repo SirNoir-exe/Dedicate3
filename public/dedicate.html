@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New dedication</title>
+  <meta name="theme-color" content="#0e1038">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="wrap">
+    <div id="form-view">
+      <h1 class="page-title">New dedication</h1>
+      <p class="lede" style="margin-top:10px">Fill in the slip. It updates as you type.</p>
+
+      <div class="dedicate-grid">
+        <div class="card">
+          <ol class="progress" id="progress" aria-label="Progress">
+            <li><div class="progress-bit"></div><div class="progress-label">People</div></li>
+            <li><div class="progress-bit"></div><div class="progress-label">Song</div></li>
+            <li><div class="progress-bit"></div><div class="progress-label">Extras</div></li>
+          </ol>
+
+          <form class="form" id="dedication-form" novalidate>
+            <div class="form-error" id="error" role="alert"></div>
+
+            <fieldset class="step" data-step="0" style="border:0;padding:0;margin:0;min-width:0">
+              <h2>Who is it for?</h2>
+              <div class="field">
+                <label for="toName">Birthday person</label>
+                <input class="input" id="toName" name="toName" maxlength="100" placeholder="Their name" autocomplete="off" required>
+              </div>
+              <div class="field">
+                <label for="fromName">From</label>
+                <input class="input" id="fromName" name="fromName" maxlength="100" placeholder="Your name, or a group name" autocomplete="off" required>
+              </div>
+              <div class="field">
+                <label for="playDate">Play it on</label>
+                <input class="input" id="playDate" name="playDate" type="date" required>
+                <span class="hint">Pick their birthday.</span>
+              </div>
+            </fieldset>
+
+            <fieldset class="step" data-step="1" style="border:0;padding:0;margin:0;min-width:0">
+              <h2>Which song?</h2>
+              <div class="field">
+                <label for="song">Song title</label>
+                <input class="input" id="song" name="song" maxlength="150" placeholder="Song name" autocomplete="off" required>
+              </div>
+              <div class="field">
+                <label for="artist">Artist <span class="hint">(optional)</span></label>
+                <input class="input" id="artist" name="artist" maxlength="100" placeholder="Who sings it" autocomplete="off">
+              </div>
+            </fieldset>
+
+            <fieldset class="step" data-step="2" style="border:0;padding:0;margin:0;min-width:0">
+              <h2>Anything else?</h2>
+              <div class="field">
+                <label for="meal">Meal <span class="hint">(optional)</span></label>
+                <input class="input" id="meal" name="meal" maxlength="100" placeholder="For example, jollof rice" autocomplete="off">
+              </div>
+              <div class="field">
+                <label for="comment">Message <span class="hint">(optional)</span></label>
+                <textarea class="textarea" id="comment" name="comment" maxlength="500" placeholder="Say something nice"></textarea>
+                <div class="counter"><span id="count">0</span>/500</div>
+              </div>
+            </fieldset>
+
+            <div class="step-nav">
+              <button class="btn btn-ghost" type="button" id="back">Back</button>
+              <button class="btn" type="button" id="next">Next</button>
+              <button class="btn btn-cyan" type="submit" id="submit" hidden>Send dedication</button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="slip-wrap" aria-label="Preview of your dedication">
+          <div class="slip">
+            <div class="slip-head">
+              <span>Dedication slip</span>
+              <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            </div>
+            <dl>
+              <div><dt>To</dt><dd data-slip="toName" data-empty="Their name"></dd></div>
+              <div><dt>From</dt><dd data-slip="fromName" data-empty="Your name"></dd></div>
+              <div><dt>Song</dt><dd data-slip="song" data-empty="Song title"></dd></div>
+              <div><dt>Artist</dt><dd class="small" data-slip="artist" data-empty="No artist yet"></dd></div>
+              <div><dt>Play on</dt><dd class="small" data-slip="playDate" data-empty="Pick a date"></dd></div>
+              <div><dt>Meal</dt><dd class="small" data-slip="meal" data-empty="No meal"></dd></div>
+              <div><dt>Message</dt><dd class="small" data-slip="comment" data-empty="No message"></dd></div>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div id="success-view" class="success" hidden>
+      <div class="eq" aria-hidden="true" style="height:44px"><i></i><i></i><i></i><i></i><i></i></div>
+      <h1 class="page-title glitch" data-text="Dedication sent.">Dedication sent.</h1>
+      <p class="lede" id="success-text"></p>
+      <div class="success-actions">
+        <button class="btn" type="button" id="another">Dedicate another</button>
+        <a class="btn btn-ghost" href="mine.html">My dedications</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dedicate.js"></script>
+</body>
+</html>
